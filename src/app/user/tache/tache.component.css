@@ -1,0 +1,213 @@
+/* Style général du tableau de bord */
+.dashboard-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Espace entre les colonnes */
+  padding: 20px;
+  background-color: #f0f4f8;
+}
+
+/* Style des colonnes */
+.dashboard-column {
+  flex: 1; /* Les colonnes prennent une largeur égale */
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  max-height: 80vh;
+  overflow-y: auto; /* Ajoute une barre de défilement si le contenu dépasse la hauteur max */
+}
+
+.dashboard-column:hover {
+  transform: translateY(-5px);
+}
+
+/* Style des titres */
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #343a40;
+}
+
+/* Liste des tâches */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style des cartes de tâches */
+.task-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: grab;
+}
+
+.task-card:hover {
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+.task-card:active {
+  cursor: grabbing;
+}
+
+.task-content h3 {
+  font-size: 1.2rem;
+  color: #007bff;
+}
+
+.task-content p {
+  margin: 0.5rem 0;
+  color: #6c757d;
+}
+
+/* Style des commentaires */
+.task-comments {
+  margin-top: 1rem;
+  border-top: 1px solid #dee2e6;
+  padding-top: 1rem;
+}
+
+/* Style des items de commentaire */
+.comment-item, .reply-item {
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  background-color: #f9f9fb;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+.comment-item:hover, .reply-item:hover {
+  background-color: #eef1f5;
+}
+
+/* Style des boutons */
+.comment-button,
+.reply-button,
+.edit-button,
+.delete-button {
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+}
+
+.comment-button:hover,
+.reply-button:hover,
+.edit-button:hover,
+.delete-button:hover {
+  color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Style spécifique pour l'alignement des actions */
+.comment-actions, .reply-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Style des listes */
+.comment-list, .reply-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+/* Pour éviter la répétition des animations sur les boutons */
+.comment-button:focus,
+.reply-button:focus,
+.edit-button:focus,
+.delete-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Style pour les boîtes de commentaire et réponse */
+.comment-body, .reply-body {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.comment-body:hover, .reply-body:hover {
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Style des éléments à l'intérieur des commentaires et réponses */
+.comment-content strong, .reply-content strong {
+  color: #343a40;
+  font-size: 1rem;
+}
+
+.comment-content div, .reply-content div {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+/* Style général des commentaires */
+.comment-body, .reply-body {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.comment-body:hover, .reply-body:hover {
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Contenu des commentaires et réponses */
+.comment-header, .reply-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.comment-header strong, .reply-header strong {
+  font-size: 1rem;
+  color: #343a40;
+}
+
+.comment-header .comment-date, .reply-header .reply-date {
+  font-size: 0.85rem;
+  color: #6c757d;
+  text-align: right;
+  margin-left: auto; /* Aligne la date à droite */
+}
+
+/* Contenu principal du commentaire ou de la réponse */
+.comment-content, .reply-content {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Style des actions */
+.comment-actions, .reply-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}

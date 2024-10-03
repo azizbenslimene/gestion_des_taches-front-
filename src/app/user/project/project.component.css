@@ -1,0 +1,108 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+  color: #333;
+}
+
+.projects-container {
+  padding: 40px;
+  background: #fff;
+  max-width: 1200px;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+.projects-container:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.projects-container h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #222;
+  text-align: center;
+}
+
+/* Card Container */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: calc(33.333% - 20px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: scale(1);
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  padding: 20px;
+  background: linear-gradient(145deg, #ffffff, #f4f4f4);
+  border-radius: 8px;
+}
+
+.card-title {
+  font-size: 20px;
+  margin: 0;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-text {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #555;
+}
+
+.card-subtitle {
+  font-size: 18px;
+  margin: 15px 0 10px;
+  color: #666;
+}
+
+.group-info {
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.group-name {
+  font-size: 16px;
+  color: #007bff;
+  margin: 5px 0;
+  transition: color 0.3s ease;
+}
+
+.group-name:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 600px;
+  }
+}

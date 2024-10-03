@@ -1,0 +1,25 @@
+<app-dashboard></app-dashboard>
+
+<div class="projects-container">
+  <h2>Liste des Projets</h2>
+
+  <div class="card-container">
+    <div *ngFor="let project of projects" class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ project.projectName }}</h5>
+        <p class="card-text">Date de début: {{ project.dateStartProj | date }}</p>
+        <p class="card-text">Date de fin: {{ project.dateEndProj | date }}</p>
+
+        <!-- Affichage des informations sur le groupe -->
+        <div *ngIf="project.grp">
+          <h6 class="card-subtitle">Groupe associé :</h6>
+          <div class="group-info">
+            <ng-container *ngFor="let i of project.grp">
+              <p class="group-name">{{ i.groupName }}</p>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

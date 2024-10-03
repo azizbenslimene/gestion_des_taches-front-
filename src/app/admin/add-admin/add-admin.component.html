@@ -1,0 +1,21 @@
+<h2>Ajouter un administrateur</h2>
+<form (ngSubmit)="addAdmin()">
+  <div>
+    <label for="userName">Prénom</label>
+    <input type="text" [(ngModel)]="adminData.userName" name="userName" required>
+  </div>
+  <div>
+    <label for="userLastName">Nom</label>
+    <input type="text" [(ngModel)]="adminData.userLastName" name="userLastName" required>
+  </div>
+  <div>
+    <label for="emailUser">Email</label>
+    <input type="email" [(ngModel)]="adminData.emailUser" name="emailUser" required>
+  </div>
+  <div>
+    <label for="mtpUser">Mot de passe</label>
+    <input type="password" [(ngModel)]="adminData.mtpUser" name="mtpUser" required>
+  </div>
+
+  <button type="submit">Ajouter un admin</button>
+</form>

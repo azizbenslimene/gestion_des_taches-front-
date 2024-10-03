@@ -1,0 +1,152 @@
+.group-title {
+  text-align: center;
+  font-size: 1.7rem;
+  color: #2196F3; /* Blue Color */
+  margin-bottom: 25px;
+  animation: fadeInDown 0.6s ease-in-out;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+.card {
+  width: 320px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: #E3F2FD; /* Light blue background */
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  background-color: #1E88E5; /* Darker Blue */
+  color: #ffffff;
+  padding: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.invited-users-title {
+  font-weight: bold;
+  margin-top: 15px;
+  color: #1976D2;
+}
+
+.no-users {
+  font-style: italic;
+  color: #757575;
+}
+
+.update-form {
+  margin: 20px;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+button.p-button-secondary {
+  background-color: #64B5F6;
+  color: white;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+button.p-button-secondary:hover {
+  background-color: #42A5F5;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Dialog Form Container */
+.form-container {
+  padding: 20px;
+  background-color: #f4f6f9;
+  border-radius: 10px;
+}
+
+/* Label Styling */
+.form-label {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #1E88E5; /* Blue for label */
+  margin-bottom: 8px;
+}
+
+/* Input Styling */
+.form-input, .form-textarea {
+  border-radius: 8px;
+  border: 1px solid #cfd8dc;
+  padding: 10px;
+  width: 100%;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus, .form-textarea:focus {
+  border-color: #42A5F5; /* Blue on focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(66, 165, 245, 0.5);
+}
+
+/* Dialog Footer */
+.dialog-footer {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Button Styling */
+.dialog-btn {
+  min-width: 100px;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.p-button-secondary {
+  background-color: #B0BEC5;
+  border: none;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.p-button-secondary:hover {
+  background-color: #90A4AE;
+}
+
+.p-button-primary {
+  background-color: #1E88E5;
+  border: none;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.p-button-primary:hover {
+  background-color: #1565C0;
+}

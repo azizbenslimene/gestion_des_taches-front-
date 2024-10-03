@@ -1,0 +1,52 @@
+
+<app-dashboard></app-dashboard>
+
+<div class="p-card p-card-container">
+  <div class="p-card-header">
+    <h2>Créer un Nouveau Groupe</h2>
+  </div>
+  <div class="p-card-body">
+    <div  class="group-form">
+      <div class="p-field">
+        <label for="groupName">Nom du groupe</label>
+        <input id="groupName" type="text" pInputText [(ngModel)]="grp.groupName"  name="groupName" />
+      </div>
+      <div class="p-field">
+        <label for="groupDescription">Description du groupe</label>
+        <input id="groupDescription" type="text" pInputText [(ngModel)]="grp.description" name="groupDescription" />
+      </div>
+      <div class="p-field">
+        <label>Utilisateurs invités</label>
+        <p-multiSelect 
+          [options]="connectedUsers" 
+          [(ngModel)]="selectedUsers" 
+          optionLabel="userName"
+          placeholder="Sélectionner des utilisateurs" 
+          [filter]="true"
+          class="p-multiselect-custom">
+        </p-multiSelect>
+      </div>
+      <div *ngIf="selectedUsers.length > 0" class="selected-users">
+        <p><strong>Utilisateurs sélectionnés:</strong></p>
+        <ul>
+          <li *ngFor="let user of selectedUsers">{{ user.userName }}</li>
+        </ul>
+      </div>
+      <div class="button-container">
+        <button type="submit" (click)="createGroup()" class="p-button p-component p-mt-3 p-button-primary">Ajouter le Groupe</button>
+        <button type="button" (click)="showAddUserDialog()" class="p-button p-component p-mt-3 p-button-secondary">Ajouter un nouvel utilisateur</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Inviter un nouvel utilisateur" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{'width':'300px'}" [baseZIndex]="10000">
+  <div class="p-field">
+    <label for="userEmail">Email de l'utilisateur</label>
+    <input id="userEmail" type="email" pInputText [(ngModel)]="newUserEmail" name="newUserEmail" />
+  </div>
+  <div class="dialog-buttons">
+    <button type="button" (click)="inviteUser()" class="p-button p-component p-button-success">Envoyer l'Invitation</button>
+    <button type="button" (click)="displayDialog = false" class="p-button p-component p-button-danger">Annuler</button>
+  </div>
+</p-dialog>

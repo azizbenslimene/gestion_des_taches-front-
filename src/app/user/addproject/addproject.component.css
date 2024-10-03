@@ -1,0 +1,78 @@
+/* Container styling */
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e3e3e3;
+}
+
+/* Title styling */
+.form-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  font-weight: 600;
+}
+
+/* Form styling */
+.project-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Form group styling */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label styling */
+.form-group label {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #666;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Input and select styling */
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #d1d1d1;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+  outline: none;
+}
+
+/* Button styling */
+.btn-submit {
+  background-color: #4a90e2;
+  border: none;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  font-family: 'Arial', sans-serif;
+}
+
+.btn-submit:hover {
+  background-color: #357abd;
+}
+
+.btn-submit:focus {
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+}

@@ -1,0 +1,93 @@
+<div class="aa">
+    <p-megaMenu [model]="items" [style]="{ 'border-radius': '3rem', display: 'flex' }" styleClass="p-3 surface-0">
+        <ng-template pTemplate="start">
+            <!-- Logo ou icône de départ -->
+            <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-2rem">
+                <!-- Contenu SVG -->
+            </svg>
+        </ng-template>
+
+        <ng-template pTemplate="item" let-submenu>
+            <div class="p-megamenu-panel">
+                <div class="p-grid">
+                    <!-- Mon Travail -->
+                    <div *ngIf="submenu.label === 'Mon Travail'">
+                        <div *ngFor="let column of submenu.items">
+                            <div *ngFor="let item of column.items">
+                                <a pRipple class="flex align-items-center cursor-pointer px-3 py-2 overflow-hidden relative font-semibold text-lg uppercase" style="border-radius: 2rem">
+                                    <i [ngClass]="item.icon"></i>
+                                    <span class="ml-2">{{ item.label }}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Liste -->
+                    <div *ngIf="submenu.label === 'Liste'">
+                        <div *ngFor="let column of submenu.items">
+                            <div *ngFor="let item of column.items">
+                                <a pRipple class="flex align-items-center cursor-pointer px-3 py-2 overflow-hidden relative font-semibold text-lg uppercase" style="border-radius: 2rem">
+                                    <i [ngClass]="item.icon"></i>
+                                    <span class="ml-2">{{ item.label }}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Équipe -->
+                    <div *ngIf="submenu.label === 'Équipe'">
+                        <div *ngFor="let column of submenu.items">
+                            <div *ngFor="let item of column.items">
+                                <a pRipple class="flex align-items-center cursor-pointer px-3 py-2 overflow-hidden relative font-semibold text-lg uppercase" style="border-radius: 2rem">
+                                    <i [ngClass]="item.icon"></i>
+                                    <span class="ml-2">{{ item.label }}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tableau de Bord -->
+                    <div *ngIf="submenu.label === 'Tableau de Bord'">
+                        <div *ngFor="let column of submenu.items">
+                            <div *ngFor="let item of column.items">
+                                <a pRipple class="flex align-items-center cursor-pointer px-3 py-2 overflow-hidden relative font-semibold text-lg uppercase" style="border-radius: 2rem">
+                                    <i [ngClass]="item.icon"></i>
+                                    <span class="ml-2">{{ item.label }}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calendrier -->
+                    <div *ngIf="submenu.label === 'Calendrier'">
+                        <div *ngFor="let column of submenu.items">
+                            <div *ngFor="let item of column.items">
+                                <a pRipple class="flex align-items-center cursor-pointer px-3 py-2 overflow-hidden relative font-semibold text-lg uppercase" style="border-radius: 2rem">
+                                    <i [ngClass]="item.icon"></i>
+                                    <span class="ml-2">{{ item.label }}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="end">
+            <!-- Avatar ou icône de fin -->
+            <p-avatarGroup styleClass="mb-3">
+                <p-avatarGroup styleClass="mb-3">
+                    <p-avatar 
+                    [image]="data.avatarUrl"
+                                         size="large" 
+                      shape="circle" 
+                      routerLink="/user/profile">
+                    </p-avatar>
+                  </p-avatarGroup>
+                  
+            </p-avatarGroup>
+            
+        </ng-template>
+    </p-megaMenu>
+</div>

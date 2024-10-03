@@ -1,0 +1,31 @@
+<div class="group-list" *ngIf="groups.length > 0">
+    <h3 class="group-title">Groupes Créés :</h3>
+    <table class="group-table">
+      <thead>
+        <tr>
+          <th>Nom du Groupe</th>
+          <th>Description</th>
+          <th>Utilisateurs Invités</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let group of groups">
+          <td>{{ group.groupName }}</td>
+          <td>{{ group.description }}</td>
+          <td>
+            <ul *ngIf="group.invitedUser.length > 0">
+              <li *ngFor="let user of group.invitedUser">{{ user.userName }}</li>
+            </ul>
+            <p *ngIf="group.invitedUser.length === 0">Aucun utilisateur invité</p>
+          </td>
+          <td>
+            <button class="btn delete-btn" (click)="deleteGroup(group._id)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <p *ngIf="groups.length === 0">Aucun groupe créé pour le moment.</p>
+  

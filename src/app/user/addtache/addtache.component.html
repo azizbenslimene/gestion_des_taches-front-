@@ -1,0 +1,53 @@
+<!-- src/app/components/addtache/addtache.component.html -->
+<app-dashboard></app-dashboard>
+
+<div class="form-container">
+  <form [formGroup]="tacheForm" (ngSubmit)="onSubmit()" class="form-tache">
+    <h2 class="form-title">Ajouter une Tâche</h2>
+    
+    <div class="form-group">
+      <label for="tacheTitle" class="form-label">Titre de la Tâche</label>
+      <input id="tacheTitle" formControlName="tacheTitle" type="text" class="form-control" placeholder="Entrez le titre de la tâche" />
+      <div *ngIf="tacheForm.get('tacheTitle')?.invalid && tacheForm.get('tacheTitle')?.touched" class="error-message">
+        Le titre est requis.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="descTache" class="form-label">Description</label>
+      <textarea id="descTache" formControlName="descTache" class="form-control" rows="4" placeholder="Décrivez la tâche"></textarea>
+      <div *ngIf="tacheForm.get('descTache')?.invalid && tacheForm.get('descTache')?.touched" class="error-message">
+        La description est requise.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="dateStartTache" class="form-label">Date de Début</label>
+      <input id="dateStartTache" formControlName="dateStartTache" type="date" class="form-control" />
+      <div *ngIf="tacheForm.get('dateStartTache')?.invalid && tacheForm.get('dateStartTache')?.touched" class="error-message">
+        La date de début est requise.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="dateEndTache" class="form-label">Date de Fin</label>
+      <input id="dateEndTache" formControlName="dateEndTache" type="date" class="form-control" />
+      <div *ngIf="tacheForm.get('dateEndTache')?.invalid && tacheForm.get('dateEndTache')?.touched" class="error-message">
+        La date de fin est requise.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="projectId" class="form-label">Projet</label>
+      <select id="projectId" formControlName="projectId" class="form-select">
+        <option value="" disabled>Sélectionner un projet</option>
+        <option *ngFor="let projet of projets" [value]="projet._id">{{ projet.projectName }}</option>
+      </select>
+      <div *ngIf="tacheForm.get('projectId')?.invalid && tacheForm.get('projectId')?.touched" class="error-message">
+        Le projet est requis.
+      </div>
+    </div>
+
+    <button type="submit" class="btn-submit">Ajouter la Tâche</button>
+  </form>
+</div>

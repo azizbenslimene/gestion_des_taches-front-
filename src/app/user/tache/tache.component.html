@@ -1,0 +1,264 @@
+<app-dashboard></app-dashboard>
+<div class="dashboard-container">
+  <!-- Column for "À faire" -->
+  <div class="dashboard-column" pDroppable (onDrop)="drop(StatusTache.A_Faire)">
+    <h2>À faire</h2>
+    <ul class="task-list">
+      <ng-container *ngFor="let tache of taches">
+        <ng-container *ngIf="tache.status === StatusTache.A_Faire">
+          <li class="task-card" pDraggable (onDragStart)="dragStart(tache)" (onDragEnd)="dragEnd()">
+            <div class="task-content">
+              <h3>{{tache.tacheTitle}}</h3>
+              <p>{{tache.descTache}}</p>
+              <p><strong>Date de début:</strong> {{tache.dateStartTache | date}}</p>
+              <p><strong>Date de fin:</strong> {{tache.dateEndTache | date}}</p>
+
+              <!-- Comment Section -->
+              <div *ngIf="tache.cmnt && tache.cmnt.length > 0" class="task-comments">
+                <h4>Commentaires:</h4>
+                <ul class="comment-list">
+                  <li *ngFor="let comment of tache.cmnt" class="comment-item">
+                    <div class="comment-body">
+                      <div class="comment-header">
+                        <strong>{{ comment.userCmnt?.userName }}</strong>
+                        <span class="comment-date">{{ comment.dateCmnt | date }}</span>
+                      </div>
+                      <div class="comment-content">
+                        <div [innerHTML]="getSafeHtml(comment.descCmnt)"></div>
+                      </div>
+                      <div class="comment-actions">
+                        <button (click)="openReplyDialog(comment)" class="reply-button">Répondre</button>
+                        <button *ngIf="currentUser === comment.userCmnt?._id" (click)="startEditingComment(comment._id)" class="edit-button">Modifier</button>
+                        <button *ngIf="currentUser == comment.userCmnt?._id" (click)="deleteComment(comment._id)" class="delete-button">Supprimer</button>
+                      </div>
+                    </div>
+
+                    <!-- Réponses -->
+                    <ul class="reply-list" *ngIf="comment.replies && comment.replies.length > 0">
+                      <li *ngFor="let reply of comment.replies" class="reply-item">
+                        <div class="reply-body">
+                          <div class="reply-header">
+                            <strong>{{ reply.user?.userName }}</strong>
+                            <span class="reply-date">{{ reply.dateR | date }}</span>
+                          </div>
+                          <div class="reply-content">
+                            <div [innerHTML]="getSafeHtml(reply.desc)"></div>
+                          </div>
+                          
+                          <div class="reply-actions">
+                            <button *ngIf="currentUser == reply.user?._id" (click)="startEditingReply(reply._id)" class="edit-button">Modifier</button>
+                            <button *ngIf="currentUser == reply.user?._id" (click)="deleteReply(reply._id)" class="delete-button">Supprimer</button>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <button (click)="openCommentDialog(tache)" class="comment-button">Commenter</button>
+            </div>
+          </li>
+        </ng-container>
+      </ng-container>
+    </ul>
+  </div>
+
+  <!-- Column for "En cours" -->
+  <div class="dashboard-column" pDroppable (onDrop)="drop(StatusTache.En_Cours)">
+    <h2>En cours</h2>
+    <ul class="task-list">
+      <ng-container *ngFor="let tache of taches">
+        <ng-container *ngIf="tache.status === StatusTache.En_Cours">
+          <li class="task-card" pDraggable (onDragStart)="dragStart(tache)" (onDragEnd)="dragEnd()">
+            <div class="task-content">
+              <h3>{{tache.tacheTitle}}</h3>
+              <p>{{tache.descTache}}</p>
+              <p><strong>Date de début:</strong> {{tache.dateStartTache | date}}</p>
+              <p><strong>Date de fin:</strong> {{tache.dateEndTache | date }}</p>
+              <div *ngIf="tache.cmnt && tache.cmnt.length > 0" class="task-comments">
+                <h4>Commentaires:</h4>
+                <ul class="comment-list">
+                  <li *ngFor="let comment of tache.cmnt" class="comment-item">
+                    <div class="comment-body">
+                      <div class="comment-header">
+                        <strong>{{ comment.userCmnt?.userName }}</strong>
+                        <span class="comment-date">{{ comment.dateCmnt | date }}</span>
+                      </div>
+                      <div class="comment-content">
+                        <div [innerHTML]="getSafeHtml(comment.descCmnt)"></div>
+                      </div>
+                      <div class="comment-actions">
+                        <button (click)="openReplyDialog(comment)" class="reply-button">Répondre</button>
+                        <button *ngIf="currentUser==comment.userCmnt?._id" (click)="deleteComment(comment._id)" class="delete-button">Supprimer</button>
+                        <button *ngIf="currentUser === comment.userCmnt?._id" (click)="startEditingComment(comment._id)" class="edit-button">Edit</button>
+
+                      </div>
+                    </div>
+                    <ul class="reply-list" *ngIf="comment.replies && comment.replies.length > 0">
+                      <li *ngFor="let reply of comment.replies" class="reply-item">
+                        <div class="reply-body">
+                          <div class="reply-header">
+                            <strong>{{ reply.user?.userName }}</strong>
+                            <span class="reply-date">{{ reply.dateR | date }}</span>
+                          </div>
+                          <div class="reply-content">
+                            <div [innerHTML]="getSafeHtml(reply.desc)"></div>
+                          </div>
+                          <div class="reply-actions">
+                            <button *ngIf="currentUser === reply.user?._id" (click)="startEditingReply(reply._id)" class="edit-button">Edit</button>
+
+                            <button *ngIf="currentUser==reply.user?._id" (click)="deleteReply(reply._id)" class="delete-button">Supprimer</button>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <button (click)="openCommentDialog(tache)" class="comment-button">Commenter</button>
+            </div>
+          </li>
+        </ng-container>
+      </ng-container>
+    </ul>
+  </div>
+
+  <!-- Column for "Fait" -->
+  <div class="dashboard-column" pDroppable (onDrop)="drop(StatusTache.Fait)">
+    <h2>Fait</h2>
+    <ul class="task-list">
+      <ng-container *ngFor="let tache of taches">
+        <ng-container *ngIf="tache.status === StatusTache.Fait">
+          <li class="task-card" pDraggable (onDragStart)="dragStart(tache)" (onDragEnd)="dragEnd()">
+            <div class="task-content">
+              <h3>{{tache.tacheTitle}}</h3>
+              <p>{{tache.descTache}}</p>
+              <p><strong>Date de début:</strong> {{tache.dateStartTache | date}}</p>
+              <p><strong>Date de fin:</strong> {{tache.dateEndTache | date }}</p>
+              <div *ngIf="tache.cmnt && tache.cmnt.length > 0" class="task-comments">
+                <h4>Commentaires:</h4>
+                <ul class="comment-list">
+                  <li *ngFor="let comment of tache.cmnt" class="comment-item">
+                    <div class="comment-body">
+                      <div class="comment-header">
+                        <strong>{{ comment.userCmnt?.userName }}</strong>
+                        <span class="comment-date">{{ comment.dateCmnt | date }}</span>
+                      </div>
+                      <div class="comment-content">
+                        <div [innerHTML]="getSafeHtml(comment.descCmnt)"></div>
+                      </div>
+                      <div class="comment-actions">
+                        <button (click)="openReplyDialog(comment)" class="reply-button">Répondre</button>
+                        <button *ngIf="currentUser==comment.userCmnt?._id" (click)="deleteComment(comment._id)" class="delete-button">Supprimer</button>
+                        <button *ngIf="currentUser === comment.userCmnt?._id" (click)="startEditingComment(comment._id)" class="edit-button">Edit</button>
+                      </div>
+                    </div>
+                    <ul class="reply-list" *ngIf="comment.replies && comment.replies.length > 0">
+                      <li *ngFor="let reply of comment.replies" class="reply-item">
+                        <div class="reply-body">
+                          <div class="reply-content">
+                            <strong>{{ reply.user?.userName }}</strong>
+                            <div [innerHTML]="getSafeHtml(reply.desc)"></div>
+                          </div>
+                          <div class="reply-actions">
+                            <button *ngIf="currentUser==reply.user?._id" (click)="startEditingReply(reply._id)" class="delete-button">edit</button>
+
+                            <button *ngIf="currentUser==reply.user?._id" (click)="deleteReply(reply._id)" class="delete-button">Supprimer</button>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <button (click)="openCommentDialog(tache)" class="comment-button">Commenter</button>
+            </div>
+          </li>
+        </ng-container>
+      </ng-container>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+<!-- Dialog pour ajouter un commentaire -->
+<p-dialog header="Ajouter un commentaire" [modal]="true" [style]="{ width: '30rem' }" [(visible)]="commentDialogVisible">
+  <div *ngIf="selectedTache" class="form-container">
+    <div class="form-field">
+      <label for="commentaire">Commentaire</label>
+      <p-editor [(ngModel)]="commentaire" [style]="{ height: '320px' }"></p-editor>
+    </div>
+    <p-footer>
+      <div class="button-group">
+        <button pButton label="Annuler" icon="pi pi-times" class="cancel-button" (click)="hideCommentDialog()">Annuler</button>
+        <button pButton label="Sauvegarder" icon="pi pi-check" class="save-button" (click)="saveComment()">Sauvegarder</button>
+      </div>
+    </p-footer>
+  </div>
+</p-dialog>
+
+<!-- Dialog pour répondre à un commentaire -->
+<p-dialog header="Répondre au commentaire" [modal]="true" [style]="{ width: '50rem' }" [(visible)]="replyDialogVisible">
+  <form >
+
+  <div *ngIf="selectedComment" class="form-container">
+    <div class="form-field">
+      <label for="reply">Votre réponse</label>
+      <p-editor [(ngModel)]="replyDesc" placeholder="Écrivez votre réponse ici..." name=" aaa"></p-editor>
+    </div>
+    <p-footer>
+      <div class="button-group">
+        <button pButton label="Annuler" icon="pi pi-times" class="btn btn-danger cancel-button m-3" (click)="hideReplyDialog()">Annuler</button>
+        <button pButton label="Envoyer" icon="pi pi-check" class="btn btn-outline-primary save-button" (click)="addReplyToComment()">Envoyer</button>
+      </div>
+    </p-footer>
+  </div>
+</form>
+
+</p-dialog>
+
+<!--update commentaire-->
+
+<p-dialog header="Modifier le commentaire" [(visible)]="commentDialogupdate" [modal]="true" [responsive]="true" [style]="{'width': '500px'}" (onHide)="cancelEdit()">
+  <form (ngSubmit)="saveUpdatedComment()">
+    <div class="p-fluid">
+      <!-- Champ de texte pour le commentaire -->
+      <div class="p-field">
+        <label for="commentText" class="form-label">Texte du commentaire</label>
+        <p-editor [(ngModel)]="updatedCommentText" name="commentText" [style]="{'height':'200px'}"></p-editor>  <!-- Utilise un éditeur de texte -->
+        <p-message *ngIf="!updatedCommentText.trim()" severity="error" text="Le texte du commentaire est requis"></p-message>
+      </div>
+    </div>
+
+    <p-footer>
+      <button type="submit" pButton label="Mettre à jour" [disabled]="!updatedCommentText.trim()" class="p-button-primary">update</button>
+    </p-footer>
+  </form>
+</p-dialog>
+
+
+
+
+<!-- update réponse -->
+
+<p-dialog header="Modifier la réponse" [(visible)]="replyDialogupdate" [modal]="true" [responsive]="true" [style]="{'width': '500px'}" (onHide)="cancelEdit()">
+  <form (ngSubmit)="saveUpdatedReply()">
+    <div class="p-fluid">
+      <!-- Champ de texte pour la réponse -->
+      <div class="p-field">
+        <label for="replyText" class="form-label">Texte de la réponse</label>
+        <p-editor [(ngModel)]="updatedReplyText" name="replyText" [style]="{'height':'200px'}"></p-editor>  <!-- Utilise un éditeur de texte -->
+        <p-message *ngIf="!updatedReplyText.trim()" severity="error" text="Le texte de la réponse est requis"></p-message>
+      </div>
+    </div>
+
+    <p-footer>
+      <button type="submit" pButton label="Mettre à jour" [disabled]="!updatedReplyText.trim()" class="p-button-primary">Mettre à jour</button>
+    </p-footer>
+  </form>
+</p-dialog>
+
+

@@ -1,0 +1,36 @@
+
+<div class="projects-container">
+  <h2 class="title">Liste des Projets</h2>
+
+  <table class="projects-table">
+    <thead>
+      <tr>
+        <th>Nom du Projet</th>
+        <th>Date de Début</th>
+        <th>Date de Fin</th>
+        <th>Groupe Associé</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects">
+        <td>{{ project.projectName }}</td>
+        <td>{{ project.dateStartProj | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ project.dateEndProj | date: 'dd/MM/yyyy' }}</td>
+        <td>
+          <ng-container *ngIf="project.grp && project.grp.length > 0">
+            <ul>
+              <li *ngFor="let group of project.grp">{{ group.groupName }}</li>
+            </ul>
+          </ng-container>
+          <p *ngIf="!project.grp || project.grp.length === 0">Aucun groupe associé</p>
+        </td>
+        <td>
+          <button class="btn delete-btn" (click)="deleteProject(project._id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="projects.length === 0" class="no-projects">Aucun projet créé pour le moment.</p>
+</div>

@@ -1,0 +1,48 @@
+<app-dashboard></app-dashboard>
+
+<div class="group-list" *ngIf="groups.length > 0">
+  <h3 class="group-title">Groupes Créés :</h3>
+  <div class="cards-container">
+    <div class="card" *ngFor="let group of groups" (click)="openUpdateDialog(group)">
+      <div class="card-header">
+        <strong>{{ group.groupName }}</strong>
+      </div>
+      <div class="card-body">
+        <p>{{ group.description }}</p>
+        <p *ngIf="group.invitedUser.length > 0" class="invited-users-title">Utilisateurs invités :</p>
+        <ul *ngIf="group.invitedUser.length > 0">
+          <li *ngFor="let user of group.invitedUser">{{ user.userName }}</li>
+        </ul>
+        <p *ngIf="group.invitedUser.length === 0" class="no-users">Aucun utilisateur invité</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Update Group" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{'width': '550px'}" (onHide)="closeDialog()">
+    <form (ngSubmit)="updateGroup()" class="update-form">
+      <div class="p-fluid form-container">
+        <!-- Group Name -->
+        <div class="p-field">
+          <label for="groupName" class="form-label">Group Name</label>
+          <input id="groupName" pInputText [(ngModel)]="selectedGroup.groupName" name="groupName" required class="form-input">
+          <p-message *ngIf="!selectedGroup?.groupName" severity="error" text="Group name is required"></p-message>
+        </div>
+  
+        <!-- Description -->
+        <div class="p-field">
+          <label for="description" class="form-label">Description</label>
+          <textarea id="description" pInputTextarea [(ngModel)]="selectedGroup.description" name="description" class="form-textarea"></textarea>
+        </div>
+      </div>
+  
+      <!-- Footer Buttons Inside the Form -->
+      <div class="dialog-footer">
+        <button type="submit" pButton label="Update" [disabled]="!selectedGroup.groupName" class="p-button-primary dialog-btn">update</button>
+      </div>
+    </form>
+  </p-dialog>
+  
+  
+
+  

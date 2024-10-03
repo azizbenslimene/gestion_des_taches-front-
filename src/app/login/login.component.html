@@ -1,0 +1,70 @@
+<!-- Form Section Start -->
+<section class="w3l-hotair-form">
+   
+    <div class="container">
+      <div class="workinghny-form-grid">
+        <div class="main-hotair">
+          <div class="content-wthree">
+            <h2>Se Connecter</h2>
+            <!-- Form for user login -->
+            <form (ngSubmit)="login()" #loginForm="ngForm">
+              <!-- Email input field -->
+              <input 
+                type="text" 
+                class="text" 
+                name="emailUser"
+                [(ngModel)]="user.emailUser" 
+                placeholder="Your email" 
+                required 
+                autofocus 
+                #userName="ngModel">
+              <!-- Password input field -->
+              <input 
+                type="password" 
+                class="password" 
+                name="mtpUser" 
+                [(ngModel)]="user.mtpUser" 
+                placeholder="Your password" 
+                required 
+                #password="ngModel">
+              <!-- Submit button to trigger login -->
+              <button class="btn" type="submit" (click)="closeVerificationDialog()">Se Connecter</button> 
+            </form>
+            <p class="account">Pas encore de compte ? <a href="/register">S'inscrire</a></p>
+          </div>
+          <div class="w3l_form align-self">
+            <div class="left_grid_info">
+              <img src="../../assets/images/1.png" alt="Image" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PrimeNG Toast component to display messages -->
+  <p-toast></p-toast>
+
+  <!-- PrimeNG Dialog for Verification Code -->
+<!-- PrimeNG Dialog for Verification Code -->
+<p-dialog 
+  header="Enter Verification Code" 
+  [(visible)]="displayVerificationDialog" 
+  (onHide)="closeVerificationDialog()"
+  [modal]="true" 
+  [closable]="false"
+  [dismissableMask]="true"
+  [style]="{'width': '400px', 'border-radius': '12px', 'box-shadow': '0 10px 30px rgba(0, 0, 0, 0.1)'}"
+  [contentStyle]="{'padding': '20px', 'background': '#ffffff', 'text-align': 'center'}"
+  [showTransitionOptions]="'300ms ease-out'"
+  [hideTransitionOptions]="'300ms ease-in'">
+  <div class="dialog-content">
+    <label class="verification-label">Please Enter Your Verification Code:</label>
+    <input [(ngModel)]="verificationCode" name="verificationCode" class="verification-input" required />
+  </div>
+  <p-footer class="dialog-footer">
+    <button class="btn btn-primary" (click)="submitVerificationCode()">Submit Code</button>
+    <button class="btn btn-secondary" (click)="closeVerificationDialog()">Cancel</button>
+  </p-footer>
+</p-dialog>
+

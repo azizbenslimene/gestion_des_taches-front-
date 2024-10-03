@@ -1,0 +1,110 @@
+.page-content {
+    padding: 80px;
+    
+    background-color: #f5f5f5;
+    min-height: 100vh;
+  }
+  
+  .user-card-full {
+    background: linear-gradient(135deg, #ffffff 50%, #f9f9f9 50%);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    padding: 30px;
+  }
+  
+  .user-card-full:hover {
+    transform: translateY(-10px);
+  }
+  
+  .user-profile {
+    background: linear-gradient(135deg, #2b678a 50%, #5699c5 50%);
+    position: relative;
+    
+  }
+  
+  .profile-image-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .profile-img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .profile-img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-submit {
+    background-color: #fff;
+    color: #2b8a3e;
+    border-radius: 30px;
+    padding: 15px 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-submit:hover {
+    background-color: #56c57b;
+    color: #fff;
+  }
+  
+  .card-block {
+    padding: 30px;
+  }
+  
+  .job-title {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .edit-icon {
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  .social-link {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .social-icon {
+    margin-right: 30px;
+    font-size: 30px;
+    color: #888;
+    transition: color 0.3s ease;
+  }
+  
+  .social-icon:hover {
+    color: #2b8a3e;
+  }
+  
+  .bg-c-lite-green {
+    background-color: #2b8a3e;
+  }
+  
+  .card-block h6 {
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+  
+  .card-block .text-muted {
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+  

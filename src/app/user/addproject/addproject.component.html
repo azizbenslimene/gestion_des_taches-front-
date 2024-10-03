@@ -1,0 +1,30 @@
+<app-dashboard></app-dashboard>
+<div class="container">
+  <h2 class="form-title">Créer un Projet</h2>
+  <form (ngSubmit)="addProject()" class="project-form">
+    <div class="form-group">
+      <label for="projectName">Nom du projet :</label>
+      <input id="projectName" [(ngModel)]="newProject.projectName" name="projectName" class="form-control" placeholder="Entrez le nom du projet" required />
+    </div>
+
+    <div class="form-group">
+      <label for="dateStartProj">Date de début :</label>
+      <input type="date" id="dateStartProj" [(ngModel)]="newProject.dateStartProj" name="dateStartProj" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+      <label for="dateEndProj">Date de fin :</label>
+      <input type="date" id="dateEndProj" [(ngModel)]="newProject.dateEndProj" name="dateEndProj" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+      <label for="groupId">Équipe :</label>
+      <select id="groupId" [(ngModel)]="newProject.groupId" name="groupId" class="form-control" required>
+        <option value="" disabled selected>Choisissez une équipe</option>
+        <option *ngFor="let group of groups" [value]="group._id">{{ group.groupName }}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Créer le projet</button>
+  </form>
+</div>

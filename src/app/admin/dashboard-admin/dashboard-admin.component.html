@@ -1,0 +1,42 @@
+<button class="router-link" routerLink="/admin/addadmin">Ajouter Admin</button>
+<button class="router-link" routerLink="/admin/groupsadmin">groups </button>
+<button class="router-link" routerLink="/admin/projectadmin">projects </button>
+
+
+<h2>Liste des utilisateurs et admins</h2>
+
+<label for="role">Filtrer par rôle :</label>
+<select [(ngModel)]="selectedRole" (change)="getUsers()">
+  <option value="">Tous</option>
+  <option value="user">Utilisateurs</option>
+  <option value="admin">Administrateurs</option>
+</select>
+
+<table>
+  <thead>
+    <tr>
+      <th>Avatar</th> <!-- New Avatar Column -->
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Email</th>
+      <th>Rôle</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>
+        <img [src]="user.avatarUrl || 'default-avatar.png'" alt="Avatar" width="50" height="50" style="border-radius: 50%;"> <!-- Avatar Image -->
+      </td>
+      <td>{{ user.userLastName }}</td>
+      <td>{{ user.userName }}</td>
+      <td>{{ user.emailUser }}</td>
+      <td>{{ user.role }}</td>
+      <td>
+        <button (click)="changeRole(user._id, 'admin')">Promouvoir en Admin</button>
+        <button (click)="changeRole(user._id, 'user')">Démouvoir en Utilisateur</button>
+        <button class="delete" (click)="deleteUser(user._id)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

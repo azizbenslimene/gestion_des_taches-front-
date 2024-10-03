@@ -1,0 +1,66 @@
+.projects-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .projects-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .projects-table th, .projects-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .projects-table th {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .projects-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .projects-table ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+  
+  .projects-table li {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c82333;
+  }
+  
+  .no-projects {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    margin-top: 20px;
+  }
+  

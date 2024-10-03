@@ -1,0 +1,114 @@
+/* Styles pour le formulaire de création de groupe */
+.p-card-container {
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .p-card-header {
+    background: #007ad9;
+    color: #fff;
+    padding: 16px;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .p-card-body {
+    padding: 20px;
+  }
+  
+  .group-form .p-field {
+    margin-bottom: 16px;
+  }
+  
+  .group-form label {
+    font-weight: 600;
+  }
+  
+  .group-form input {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .group-form input:focus {
+    border-color: #007ad9;
+    outline: none;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .p-button-primary {
+    background-color: #007ad9;
+    border-color: #007ad9;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .p-button-primary:hover {
+    background-color: #0056b3;
+    border-color: #00408a;
+  }
+  
+  .p-button-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .p-button-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+  
+  .selected-users ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .selected-users li {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 4px;
+  }
+  
+  /* Styles pour le dialogue */
+  .dialog-content {
+    padding: 20px;
+  }
+  
+  .dialog-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .p-dialog .p-button-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .p-dialog .p-button-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+  
+  .p-dialog .p-button-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .p-dialog .p-button-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+  

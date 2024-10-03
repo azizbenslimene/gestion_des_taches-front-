@@ -1,0 +1,81 @@
+/* Style général du tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    background-color: #f9f9f9;
+  }
+  
+  thead th {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tbody td button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  tbody td button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  tbody td button.delete {
+    background-color: #dc3545;
+  }
+  
+  tbody td button.delete:hover {
+    background-color: #c82333;
+  }
+  
+  button.router-link {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 20px;
+  }
+  
+  button.router-link:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+  }
+  
+  /* Style de l'en-tête et du sélecteur */
+  h2 {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  label {
+    margin-right: 10px;
+    font-size: 16px;
+  }
+  

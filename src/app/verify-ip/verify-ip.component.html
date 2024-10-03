@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Verify New IP Address</h2>
+    <p>
+      A login attempt was made from IP address: <strong>{{ ip }}</strong>.
+      Would you like to add this IP to your account?
+    </p>
+  
+    <!-- Display IP geolocation data -->
+    <div *ngIf="locationData && locationData.status === 'success'">
+      <p><strong>Location:</strong> {{ locationData.city }}, {{ locationData.regionName }}, {{ locationData.country }}</p>
+      <p><strong>ISP:</strong> {{ locationData.isp }} ({{ locationData.org }})</p>
+      <p><strong>Coordinates:</strong> {{ locationData.lat }}, {{ locationData.lon }}</p>
+    </div>
+  
+    <!-- Leaflet map -->
+    <div id="map" style="height: 400px; margin-top: 20px;"></div> <!-- Map container -->
+  
+    <div class="button-group">
+      <button pButton type="button" label="Accept" icon="pi pi-check" (click)="acceptIp()">accept</button>
+      <button pButton type="button" label="Reject" icon="pi pi-times" class="p-button-danger" (click)="rejectIp()">reject</button>
+    </div>
+  </div>
+  

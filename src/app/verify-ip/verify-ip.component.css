@@ -1,0 +1,25 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  button {
+    width: 150px;
+  }
+  
+  #map {
+    height: 400px;  /* Ensure the map container has a height */
+    width: 100%;    /* Ensure the map takes full width */
+  }
+  
